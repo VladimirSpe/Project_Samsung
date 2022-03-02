@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/drawable-anydpi/ic_action_name.xml" value="0.1" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2388888888888889" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/drawable/bottom_navigation_profile.xml" value="0.1398148148148148" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/drawable/button_nav_style.xml" value="0.21666666666666667" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/drawable/button_profile_fragment_frame.xml" value="0.1" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/drawable/customborder.xml" value="0.16" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/drawable/exit_button_style.xml" value="0.20925925925925926" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/drawable/frame_arrow.xml" value="0.1" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/drawable/gift_background.xml" value="0.1" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/drawable/gift_foreground.xml" value="0.1" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.21822916666666667" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.21822916666666667" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.2388888888888889" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.2388888888888889" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/drawable/ic_launcher_ad_add.xml" value="0.20555555555555555" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/drawable/ic_launcher_ad_add_menu.xml" value="0.1935185185185185" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2388888888888889" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/drawable/ic_launcher_completed_ads.xml" value="0.1935185185185185" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/drawable/ic_launcher_complited_ads.xml" value="0.18333333333333332" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/drawable/ic_launcher_myads.xml" value="0.2111111111111111" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/drawable/ic_launcher_reviews.xml" value="0.2361111111111111" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/drawable/ic_launcher_settings.xml" value="0.24166666666666667" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.2388888888888889" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/drawable/profile_button_disable.xml" value="0.14444444444444443" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/drawable/profile_button_pressed.xml" value="0.25925925925925924" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/drawable/profile_scroll_button.xml" value="0.13703703703703704" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/drawable/profile_setting_button.xml" value="0.20925925925925926" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/drawable/profile_settings_button.xml" value="0.22685185185185186" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/drawable/progress_b.xml" value="0.21979166666666666" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/drawable/rotate_center.xml" value="0.11388888888888889" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/drawable/roundprofile_button.xml" value="0.1537037037037037" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/drawable/search_foreground.xml" value="0.14305555555555555" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/layout-land/fragment_profile.xml" value="0.1" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/layout-sw600dp/fragment_profile.xml" value="0.10367253251721499" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/layout/activity_forgot_pass_inp.xml" value="0.18" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/layout/activity_inp.xml" value="0.22" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/layout/activity_main2.xml" value="0.25" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/layout/activity_main3.xml" value="0.1" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/layout/activity_ocn.xml" value="0.1" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/layout/activity_registration.xml" value="0.22" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/layout/add_menu.xml" value="0.14722222222222223" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/layout/content_main.xml" value="0.1" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/layout/fragment_dashboard.xml" value="0.18704710144927536" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/layout/fragment_home.xml" value="0.19610507246376813" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/layout/fragment_menu.xml" value="0.203125" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/layout/fragment_messages.xml" value="0.2" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/layout/fragment_notifications.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/layout/fragment_profile.xml" value="0.22" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/layout/fragment_profile_settings_fragment.xml" value="0.23869346733668342" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/layout/sample_my_view.xml" value="0.1" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/menu/bottom_profile_nav_menu.xml" value="0.1787037037037037" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
