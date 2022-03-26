@@ -22,6 +22,6 @@
 
     <fragment
         android:id="@+id/navigation_add"
-        android:name="com.example.project.ui.Menu.MenuFragment"
+        android:name="com.example.project.ui.Add.AddFragment"
         tools:layout="@layout/fragment_menu" />
 </navigation>

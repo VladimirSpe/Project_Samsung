@@ -11,7 +11,8 @@
         android:theme="@style/Theme.Project">
         <activity
             android:name=".Ocn"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".Forgot_pass_inp"
             android:exported="false" />

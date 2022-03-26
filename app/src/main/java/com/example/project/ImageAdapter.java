@@ -9,12 +9,12 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class ImageTextAdapter extends BaseAdapter {
+public class ImageAdapter extends BaseAdapter {
     private Context mContext;
     public Bitmap[] mThumbIds;
     public Integer z;
 
-    public ImageTextAdapter(Context c, Bitmap[] s, int z) {
+    public ImageAdapter(Context c, Bitmap[] s, int z) {
         mContext = c; mThumbIds = s; this.z = z;
     }
 
@@ -30,6 +30,9 @@ public class ImageTextAdapter extends BaseAdapter {
         return position;
     }
 
+    public void Update(Bitmap[] ar){
+        this.mThumbIds = ar;
+    }
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // TODO Auto-generated method stub
@@ -50,9 +53,6 @@ public class ImageTextAdapter extends BaseAdapter {
         TextView textView_price = (TextView) grid.findViewById(R.id.textpart_price);
         TextView textView_place = (TextView) grid.findViewById(R.id.textpart_place);
         imageView.setImageBitmap(mThumbIds[position]);
-        textView_price.setText("0000Р");
-        textView_place.setText("Где-то там");
-        textView.setText("Название");
         return grid;
     }
 

@@ -2,8 +2,13 @@ package com.example.project.ui.Menu;
 
 import static com.firebase.ui.auth.AuthUI.getApplicationContext;
 
+import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,8 +38,8 @@ public class MenuFragment extends Fragment {
         carouselView.setImageListener(imageListener);
         GridView gridview = (GridView) view.findViewById(R.id.gridview);
         gridview.setNumColumns(2);
-        gridview.setAdapter(new ImageTextAdapter(getActivity()));
-
+        Bitmap[] a = new Bitmap[]{BitmapFactory.decodeResource(getResources(), R.drawable.test)};
+        gridview.setAdapter(new ImageTextAdapter(getActivity(), a, R.layout.add_menu));
         gridview.setOnItemClickListener(gridviewOnItemClickListener);
         return view;
     }
@@ -45,12 +50,13 @@ public class MenuFragment extends Fragment {
             imageView.setImageResource(sampleImages[position]);
         }
     };
-    private GridView.OnItemClickListener gridviewOnItemClickListener = new GridView.OnItemClickListener() {
+    private final GridView.OnItemClickListener gridviewOnItemClickListener = new GridView.OnItemClickListener() {
 
         @Override
         public void onItemClick(AdapterView<?> parent, View v, int position,
                                 long id) {
-
+            Log.d("Click", String.valueOf(position));
         }
     };
+
 }
