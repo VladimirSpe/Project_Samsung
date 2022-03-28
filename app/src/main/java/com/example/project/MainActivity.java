@@ -13,7 +13,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
-    Button But_Inp, But_Reg, out;
+    Button But_Inp, But_Reg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         But_Inp = findViewById(R.id.But_inp);
         But_Reg = findViewById(R.id.But_reg);
-        out = findViewById(R.id.Out_b);
         But_Reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -39,12 +38,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, Inp_Act.class);
                 startActivity(intent);
-            }
-        });
-        out.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
             }
         });
     }

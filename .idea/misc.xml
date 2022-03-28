@@ -48,10 +48,11 @@
         <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/layout/activity_main3.xml" value="0.1" />
         <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/layout/activity_ocn.xml" value="0.1" />
         <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/layout/activity_registration.xml" value="0.22" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/layout/add_listview.xml" value="0.1" />
         <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/layout/add_menu.xml" value="0.14722222222222223" />
         <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/layout/add_menu1.xml" value="0.1" />
         <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/layout/content_main.xml" value="0.1" />
-        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/layout/fragment_add.xml" value="0.18472222222222223" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/layout/fragment_add.xml" value="0.1" />
         <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/layout/fragment_dashboard.xml" value="0.18704710144927536" />
         <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/layout/fragment_home.xml" value="0.19610507246376813" />
         <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/layout/fragment_menu.xml" value="0.1" />
@@ -59,6 +60,7 @@
         <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/layout/fragment_notifications.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/layout/fragment_profile.xml" value="0.22" />
         <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/layout/fragment_profile_settings_fragment.xml" value="0.23869346733668342" />
+        <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/layout/fragment_start_add.xml" value="0.1" />
         <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/layout/sample_my_view.xml" value="0.1" />
         <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25" />
         <entry key="..\:/Users/Vladimir/AndroidStudioProjects/Project2/app/src/main/res/menu/bottom_profile_nav_menu.xml" value="0.1787037037037037" />

@@ -27,6 +27,20 @@
             android:ems="10"
             android:hint="Email"
             android:inputType="textEmailAddress" />
+        <EditText
+            android:id="@+id/user_name"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:ems="10"
+            android:hint="Имя"
+            android:inputType="textPersonName"/>
+        <EditText
+            android:id="@+id/user_number"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:ems="10"
+            android:hint="Номер телефона"
+            android:inputType="number"/>
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -73,6 +87,20 @@
             android:layout_gravity="right"
             android:visibility="invisible"
             android:text="Восстановить пароль?" />
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:text="Добавить фото"/>
+        <ImageButton
+            android:id="@+id/user_photo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/add"
+            android:scaleType="centerInside"
+            android:background="@color/white"
+            android:layout_gravity="center_horizontal"/>
     </LinearLayout>
 
     <TextView
@@ -95,7 +123,7 @@
         android:layout_width="348dp"
         android:layout_height="69dp"
         android:layout_marginStart="31dp"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="69dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -116,7 +144,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:visibility="invisible"
-            android:layout_marginLeft="20dip"
             android:indeterminateDrawable="@drawable/progress_b"
             android:indeterminateOnly="true" />
     </FrameLayout>
