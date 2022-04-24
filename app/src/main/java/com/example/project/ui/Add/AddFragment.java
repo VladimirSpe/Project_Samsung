@@ -3,6 +3,7 @@ package com.example.project.ui.Add;
 import static android.app.Activity.RESULT_OK;
 import static android.content.ContentValues.TAG;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -10,6 +11,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,11 +20,13 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.project.Adds;
 import com.example.project.ImageAdapter;
@@ -36,18 +40,25 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class AddFragment extends Fragment {
     private int c = 0;
+    boolean p;
     private final int Pick_image = 1;
     GridView gridview1;
     Bitmap[] a = new Bitmap[5];
     Button inp;
     ProgressBar inp_prog;
+    ImageButton back_to_adds;
     EditText name, preview, cost, number;
 
 
@@ -60,6 +71,7 @@ public class AddFragment extends Fragment {
         preview = (EditText) view.findViewById(R.id.add_preview);
         cost = (EditText) view.findViewById(R.id.add_cost);
         number = (EditText) view.findViewById(R.id.add_number);
+        back_to_adds = view.findViewById(R.id.back_button);
         inp_prog = (ProgressBar) view.findViewById(R.id.Progbar_add);
         gridview1.setAdapter(new ImageAdapter(getActivity(), a, R.layout.add_menu1));
         gridview1.setOnItemClickListener(gridviewOnItemClickListener);
@@ -69,7 +81,72 @@ public class AddFragment extends Fragment {
         inp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new AddFragment.Async_Registr().execute();
+                p = true;
+                inp.setVisibility(View.INVISIBLE);
+                inp_prog.setVisibility(View.VISIBLE);
+                if (name.length() <= 1) {
+                    name.setError("Название должно состоять минимум из 2 знаков");
+                    name.requestFocus();
+                    p = false;
+                }
+                if (preview.length() <= 1) {
+                    preview.setError("Описание должно состоять минимум из 2 знаков");
+                    preview.requestFocus();
+                    p = false;
+                }
+                if (cost.length() < 1) {
+                    cost.setError("Цена должна состоять минимум из 1 цифры");
+                    cost.requestFocus();
+                    p = false;
+                }
+                if (number.length() < 4) {
+                    number.setError("Номер должен состоять минимум из 4 цифр");
+                    number.requestFocus();
+                    p = false;
+                }
+                if (p) {
+                    ArrayList<String> a1 = new ArrayList<>();
+                    for (Bitmap i: a){
+                        if (i != null){
+                            a1.add(BitMapToString(i));
+                        }
+                    }
+                    Adds adds = new Adds(a1, name.getText().toString(), preview.getText().toString(), Integer.parseInt(cost.getText().toString()), number.getText().toString());
+                    if (!(adds.Add_Adds())) {
+                        p = false;
+
+                    }
+                }
+                if (p) {
+                    name.setText("");
+                    preview.setText("");
+                    cost.setText("");
+                    number.setText("");
+                    Arrays.fill(a, null);
+                    gridview1.setAdapter(new ImageAdapter(getActivity(), a, R.layout.add_menu1));
+                    inp.setVisibility(View.VISIBLE);
+                    inp_prog.setVisibility(View.INVISIBLE);
+                    Fragment frag2 = new Start_addFragment();
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    ft.replace(R.id.nav_host_fragment_activity_main, frag2);
+                    ft.addToBackStack(frag2.toString());
+                    ft.commit();
+                }
+                else {
+                    Toast.makeText(getActivity(), "Ошибка", Toast.LENGTH_LONG).show();
+                    inp.setVisibility(View.VISIBLE);
+                    inp_prog.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+        back_to_adds.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment frag2 = new Start_addFragment();
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.replace(R.id.nav_host_fragment_activity_main, frag2);
+                ft.addToBackStack(frag2.toString());
+                ft.commit();
             }
         });
         return view;
@@ -109,50 +186,18 @@ public class AddFragment extends Fragment {
                 }
         }
     }
-    private class Async_Registr extends AsyncTask<Void, String, Boolean> {
+    private class Async_Add extends AsyncTask<Void, String, Boolean> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            inp.setVisibility(View.INVISIBLE);
-            inp_prog.setVisibility(View.VISIBLE);
+
         }
         protected Boolean doInBackground(Void... args) {
-
-            boolean p = true;
-
-            if (name.length() <= 1) {
-                name.setError("Название должно состоять минимум из 2 знаков");
-                name.requestFocus();
-                p = false;
-            }
-            if (preview.length() <= 1) {
-                preview.setError("Описание должно состоять минимум из 2 знаков");
-                preview.requestFocus();
-                p = false;
-            }
-            if (cost.length() < 1) {
-                cost.setError("Название должно состоять минимум из 1 цифры");
-                cost.requestFocus();
-                p = false;
-            }
-            if (number.length() < 4) {
-                number.setError("Название должно состоять минимум из 4 цифр");
-                number.requestFocus();
-                p = false;
-            }
-            if (p) {
-                Adds adds = new Adds(a, name.getText().toString(), preview.getText().toString(), Integer.parseInt(cost.getText().toString()), number.getText().toString());
-                if (!(adds.Add_Adds())) {
-                    p = false;
-
-                }
-            }
             return p;
         }
 
         protected void onPostExecute(Boolean p) {
             if (p) {
-                Toast.makeText(getActivity(), "Объявление добавлено", Toast.LENGTH_LONG).show();
                 name.setText("");
                 preview.setText("");
                 cost.setText("");
@@ -161,6 +206,11 @@ public class AddFragment extends Fragment {
                 gridview1.setAdapter(new ImageAdapter(getActivity(), a, R.layout.add_menu1));
                 inp.setVisibility(View.VISIBLE);
                 inp_prog.setVisibility(View.INVISIBLE);
+                Fragment frag2 = new Start_addFragment();
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.replace(R.id.nav_host_fragment_activity_main, frag2);
+                ft.addToBackStack(frag2.toString());
+                ft.commit();
             }
             else {
                 Toast.makeText(getActivity(), "Ошибка", Toast.LENGTH_LONG).show();
@@ -170,6 +220,13 @@ public class AddFragment extends Fragment {
         protected void onProgressUpdate(String... values) {
             super.onProgressUpdate(values);
         }
+    }
+    public String BitMapToString(Bitmap bitmap){
+        ByteArrayOutputStream baos=new  ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG,100, baos);
+        byte [] b=baos.toByteArray();
+        String temp= Base64.encodeToString(b, Base64.DEFAULT);
+        return temp;
     }
 }
 

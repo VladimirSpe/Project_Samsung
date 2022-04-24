@@ -65,7 +65,6 @@ public class Registration extends AppCompatActivity {
         checkBox1 = findViewById(R.id.Password_vis_reg);
         name = findViewById(R.id.user_name);
         number = findViewById(R.id.user_number);
-
         photo = findViewById(R.id.user_photo);
         checkBox2 = findViewById(R.id.Password_vis_reg1);
         recover = findViewById(R.id.Recover_pass);

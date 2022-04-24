@@ -36,6 +36,14 @@
             android:textSize="35dp"
             android:textColor="#FFD600"
             android:layout_height="50dp"/>
+        <ProgressBar
+            android:id="@+id/image_progress_b"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="invisible"
+            android:indeterminateDrawable="@drawable/profile_load_progress"
+            android:indeterminateOnly="true"/>
         </FrameLayout>
         <TextView
             android:id="@+id/profile_fragment_name"
@@ -45,6 +53,14 @@
             android:layout_gravity="center_horizontal"
             android:textColor="@color/white"
             android:textSize="40dp" />
+        <ProgressBar
+            android:id="@+id/name_progress_b"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:visibility="invisible"
+            android:indeterminateDrawable="@drawable/profile_load_progress"
+            android:indeterminateOnly="true"/>
         <ImageButton
             android:id="@+id/fragment_profile_frame"
             android:layout_width="118dp"

@@ -6,11 +6,6 @@
     app:startDestination="@+id/navigation_menu">
 
     <fragment
-        android:id="@+id/navigation_messages"
-        android:name="com.example.project.ui.Messages.MessagesFragment"
-        tools:layout="@layout/fragment_messages" />
-
-    <fragment
         android:id="@+id/navigation_profile"
         android:name="com.example.project.ui.Profile.ProfileFragment"
         tools:layout="@layout/fragment_profile" />
@@ -22,6 +17,6 @@
 
     <fragment
         android:id="@+id/navigation_add"
-        android:name="com.example.project.ui.Add.AddFragment"
-        tools:layout="@layout/fragment_menu" />
+        android:name="com.example.project.ui.Add.Start_addFragment"
+        tools:layout="@layout/fragment_menu"/>
 </navigation>

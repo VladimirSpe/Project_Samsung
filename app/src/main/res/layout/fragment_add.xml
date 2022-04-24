@@ -1,83 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#DDDDDD"
     android:layout_height="match_parent">
 
-
+    <LinearLayout
+        android:id="@+id/back"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <ImageButton
+            android:id="@+id/back_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:src="@drawable/arrow_back" />
+    </LinearLayout>
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/back">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             android:orientation="vertical">
 
             <EditText
                 android:id="@+id/add_name"
                 android:layout_width="match_parent"
                 android:layout_height="57dp"
-                android:textColorHint="#8EDCFF"
-                android:backgroundTint="@color/light_blue_400"
                 android:layout_marginTop="30dp"
-                android:hint="Название"/>
+                android:backgroundTint="@color/light_blue_400"
+                android:hint="Название"
+                android:textColorHint="#8EDCFF" />
+
             <EditText
                 android:id="@+id/add_preview"
                 android:layout_width="match_parent"
-                android:textColorHint="#8EDCFF"
-                android:backgroundTint="@color/light_blue_400"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:hint="Описание"/>
+                android:backgroundTint="@color/light_blue_400"
+                android:hint="Описание"
+                android:textColorHint="#8EDCFF" />
+
             <EditText
-                    android:id="@+id/add_cost"
-                    android:layout_width="match_parent"
-                    android:layout_height="57dp"
-                    android:textColorHint="#8EDCFF"
-                    android:backgroundTint="@color/light_blue_400"
-                    android:inputType="number"
-                    android:layout_marginTop="10dp"
-                    android:hint="Цена"/>
+                android:id="@+id/add_cost"
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/light_blue_400"
+                android:hint="Цена"
+                android:inputType="number"
+                android:textColorHint="#8EDCFF" />
+
             <EditText
                 android:id="@+id/add_number"
                 android:layout_width="match_parent"
                 android:layout_height="57dp"
-                android:inputType="number"
-                android:textColorHint="#8EDCFF"
-                android:backgroundTint="@color/light_blue_400"
                 android:layout_marginTop="10dp"
-                android:hint="Номер телефона"/>
+                android:backgroundTint="@color/light_blue_400"
+                android:hint="Номер телефона"
+                android:inputType="number"
+                android:textColorHint="#8EDCFF" />
+
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="40dp"/>
+                android:layout_height="40dp" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:text="Фото:"
-                android:textSize="25dp"/>
+                android:textSize="25dp" />
+
             <GridView
                 android:id="@+id/gridview1"
                 android:layout_width="match_parent"
                 android:layout_height="350dp"
+                android:clipToPadding="false"
                 android:columnWidth="90dp"
                 android:gravity="center"
+                android:horizontalSpacing="10dp"
                 android:numColumns="auto_fit"
                 android:stretchMode="columnWidth"
-                android:verticalSpacing="10dp"
-                android:horizontalSpacing="10dp"
-                android:clipToPadding="false"/>
+                android:verticalSpacing="10dp" />
+
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="40dp"/>
+                android:layout_height="40dp" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:text="Местоположение:"
-                android:textSize="25dp"/>
+                android:textSize="25dp" />
+
             <com.google.android.gms.maps.MapView
                 android:layout_width="match_parent"
-                android:layout_height="300dp"/>
+                android:layout_height="300dp" />
+
             <FrameLayout
                 android:layout_width="348dp"
                 android:layout_height="69dp"
@@ -92,19 +121,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/light_blue_400"
-                    android:textColor="@color/white"
-                    android:text="Создать" />
+                    android:text="Создать"
+                    android:textColor="@color/white" />
 
                 <ProgressBar
                     android:id="@+id/Progbar_add"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:visibility="invisible"
                     android:layout_marginLeft="20dip"
                     android:indeterminateDrawable="@drawable/progress_b"
-                    android:indeterminateOnly="true" />
+                    android:indeterminateOnly="true"
+                    android:visibility="invisible" />
             </FrameLayout>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="50dp"/>
         </LinearLayout>
     </ScrollView>
-</androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

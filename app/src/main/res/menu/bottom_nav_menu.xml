@@ -16,9 +16,4 @@
         android:icon="@drawable/ic_launcher_ad_add_menu"
         android:title="@string/title_ad_add" />
 
-    <item
-        android:id="@+id/navigation_messages"
-        android:icon="@drawable/ic_baseline_email_24"
-        android:title="@string/title_messages" />
-
 </menu>
