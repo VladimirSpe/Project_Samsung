@@ -31,20 +31,27 @@ public class Adds{
     public String number;
     public Integer cost;
     public String userid;
+    public String id;
     public String date;
     FirebaseUser userID = auth.getCurrentUser();
-    public Adds(ArrayList<String> photo, String name, String preview, Integer cost, String number) {
+    public Adds(ArrayList<String> photo, String name, String preview, Integer cost, String number, String id) {
+
         this.name = name;
         this.cost = cost;
         this.preview = preview;
         this.number = number;
         this.photo = photo;
+        this.id = id;
     }
     public Adds(){
     }
     public boolean Add_Adds(){
         MessageDigest digest = null;
-        String text = name + preview + Integer.toString(cost) + userID.getUid();
+
+        if (id.length() == 0){
+            id = name + userID.getUid();
+        }
+        Log.d("id", id);
         Log.d("INP", userID.getUid());
         try {
             digest = MessageDigest.getInstance("SHA-256");
@@ -54,22 +61,20 @@ public class Adds{
         assert digest != null;
         Date data = new Date();
         SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy hh:mm");
-        byte[] encodedhash = digest.digest(
-                text.getBytes(StandardCharsets.UTF_8));
+        byte[] encodedhash = digest.digest(id.getBytes(StandardCharsets.UTF_8));
         DatabaseReference Ref = mDatabase.getReference("users");
-        Ref.child(userID.getUid()).child("Adds").child(bytesToHex(encodedhash)).setValue("true");
+        Ref.child(userID.getUid()).child("Adds").child(id).setValue("true");
         DatabaseReference myRef = mDatabase.getReference("Adds");
-        myRef.child((bytesToHex(encodedhash)));
-        myRef.child(bytesToHex(encodedhash)).child("name").setValue(name);
-        myRef.child(bytesToHex(encodedhash)).child("cost").setValue(cost);
-        myRef.child(bytesToHex(encodedhash)).child("number").setValue(number);
-        myRef.child(bytesToHex(encodedhash)).child("preview").setValue(preview);
-        myRef.child(bytesToHex(encodedhash)).child("time").setValue(format.format(data));
-        myRef.child(bytesToHex(encodedhash)).child("userid").setValue(userID.getUid());
+        myRef.child((id));
+        myRef.child(id).child("name").setValue(name);
+        myRef.child(id).child("cost").setValue(cost);
+        myRef.child(id).child("number").setValue(number);
+        myRef.child(id).child("preview").setValue(preview);
+        myRef.child(id).child("time").setValue(format.format(data));
+        myRef.child(id).child("userid").setValue(userID.getUid());
         for (int i = 0; i < photo.size(); i++){
             if (photo.get(i) != null){
-                Bitmap cut_image = scaleImage(StringToBitMap(photo.get(i)), 200, 200);
-                myRef.child(bytesToHex(encodedhash)).child("photo").child(Integer.toString(i)).setValue(BitMapToString(cut_image));
+                myRef.child(id).child("photo").child(Integer.toString(i)).setValue(photo.get(i));
             }
         }
 

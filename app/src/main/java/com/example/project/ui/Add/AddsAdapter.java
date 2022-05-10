@@ -30,7 +30,11 @@ public class AddsAdapter extends ArrayAdapter<Adds> {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.add_listview, null);
         }
-        ((ImageView) convertView.findViewById(R.id.photo)).setImageBitmap(StringToBitMap(adds.photo.get(0)));
+        try {
+            ((ImageView) convertView.findViewById(R.id.photo)).setImageBitmap(StringToBitMap(adds.photo.get(0)));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         ((TextView) convertView.findViewById(R.id.name)).setText(String.valueOf(adds.name));
         ((TextView) convertView.findViewById(R.id.money)).setText(String.valueOf(adds.cost) + " ₽");
         return convertView;

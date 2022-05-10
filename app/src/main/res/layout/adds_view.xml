@@ -38,6 +38,7 @@
                 android:id="@+id/add_name_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:textSize="30dp"
                 android:textColor="@color/black"/>
         </LinearLayout>
@@ -52,11 +53,14 @@
             app:strokeColor="#FF777777"
             app:strokeWidth="1dp" />
         <TextView
-            android:text="Описание"
+            android:text="Описание:"
             android:textSize="25dp"
+            android:layout_marginLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"/>
         <TextView
+            android:layout_marginLeft="10dp"
+            android:textSize="20dp"
             android:id="@+id/add_preview_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -65,24 +69,39 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white">
+                <ImageButton
+                    android:id="@+id/edit_adds"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:background="@color/white"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/edit_add"
+                    android:layout_gravity="right|center"/>
+            </FrameLayout>
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="50dp"/>
+                android:layout_height="70dp"/>
             <TextView
                 android:id="@+id/add_cost_view"
                 android:layout_width="match_parent"
+                android:gravity="right|top"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:textSize="30dp"
                 />
             <Space
                 android:layout_width="wrap_content"
-                android:layout_height="70dp"/>
+                android:layout_height="20dp"/>
             <Button
                 android:id="@+id/add_user_call"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:text="Позвонить"
+                android:visibility="invisible"
                 android:textSize="18dp"
                 android:background="@color/light_blue_600"
                 android:textColor="@color/white"/>
@@ -93,6 +112,8 @@
                 android:id="@+id/add_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:gravity="right|center"
                 android:textSize="10dp"/>
         </LinearLayout>
     </LinearLayout>

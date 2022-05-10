@@ -21,18 +21,14 @@
                 android:layout_width="70dp"
                 android:layout_height="50dp" />
 
-            <EditText
+            <SearchView
+                android:id="@+id/search_edit"
                 android:layout_width="250dp"
                 android:layout_height="50dp"
-                android:hint="Найти" />
+                android:queryHint="Найти" />
 
-            <ImageButton
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@color/white"
-                android:src="@drawable/add" />
         </LinearLayout>
-        <RelativeLayout
+        <FrameLayout
             android:id="@+id/c_la"
             android:layout_width="wrap_content"
             android:layout_height="200dp"
@@ -50,7 +46,14 @@
                 app:slideInterval="3000"
                 app:strokeColor="#FF777777"
                 app:strokeWidth="1dp" />
-        </RelativeLayout>
+            <ProgressBar
+                android:id="@+id/add_progress_carousel_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:indeterminateDrawable="@drawable/profile_load_progress"
+                android:indeterminateOnly="true"/>
+        </FrameLayout>
 
         <Space
             android:id="@+id/add_button_Space"

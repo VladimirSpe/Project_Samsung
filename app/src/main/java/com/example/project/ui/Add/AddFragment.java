@@ -8,8 +8,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
@@ -25,6 +29,8 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -57,6 +63,7 @@ public class AddFragment extends Fragment {
     GridView gridview1;
     Bitmap[] a = new Bitmap[5];
     Button inp;
+    String id = "";
     ProgressBar inp_prog;
     ImageButton back_to_adds;
     EditText name, preview, cost, number;
@@ -65,19 +72,37 @@ public class AddFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add, container, false);
+        Bundle bundle = getArguments();
+        Log.d("nn", String.valueOf(bundle));
+        ArrayList<String> photo = new ArrayList<>();
         gridview1 = (GridView) view.findViewById(R.id.gridview1);
         inp = (Button) view.findViewById(R.id.add_Button);
         name = (EditText) view.findViewById(R.id.add_name);
+
         preview = (EditText) view.findViewById(R.id.add_preview);
+
         cost = (EditText) view.findViewById(R.id.add_cost);
+
         number = (EditText) view.findViewById(R.id.add_number);
         back_to_adds = view.findViewById(R.id.back_button);
         inp_prog = (ProgressBar) view.findViewById(R.id.Progbar_add);
         gridview1.setAdapter(new ImageAdapter(getActivity(), a, R.layout.add_menu1));
         gridview1.setOnItemClickListener(gridviewOnItemClickListener);
         gridview1.setNumColumns(3);
-        Log.d("Click", Arrays.toString(a));
-        a[0] = BitmapFactory.decodeResource(getResources(), R.drawable.test);
+        if (bundle != null) {
+            inp.setText("Редактировать");
+            photo = bundle.getStringArrayList("Photo");
+            name.setText(bundle.getString("Name"));
+            preview.setText(bundle.getString("Preview"));
+            cost.setText(bundle.getString("Cost"));
+            id = bundle.getString("ID");
+            for (int i = 0; i < photo.size(); i++){
+                a[i] = StringToBitMap(photo.get(i));
+            }
+        }
+        if (a[0] == null) {
+            a[0] = getBitmapFromVectorDrawable(getActivity(), R.drawable.add_photo);
+        }
         inp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -107,14 +132,14 @@ public class AddFragment extends Fragment {
                 if (p) {
                     ArrayList<String> a1 = new ArrayList<>();
                     for (Bitmap i: a){
-                        if (i != null){
+                        if (i != null && i != BitmapFactory.decodeResource(getResources(), R.drawable.add_photo)){
                             a1.add(BitMapToString(i));
                         }
                     }
-                    Adds adds = new Adds(a1, name.getText().toString(), preview.getText().toString(), Integer.parseInt(cost.getText().toString()), number.getText().toString());
+                    Log.d("gg", String.valueOf(a1));
+                    Adds adds = new Adds(a1, name.getText().toString(), preview.getText().toString(), Integer.parseInt(cost.getText().toString()), number.getText().toString(), id);
                     if (!(adds.Add_Adds())) {
                         p = false;
-
                     }
                 }
                 if (p) {
@@ -152,6 +177,7 @@ public class AddFragment extends Fragment {
         return view;
     }
 
+
     private final GridView.OnItemClickListener gridviewOnItemClickListener = new GridView.OnItemClickListener() {
 
         @Override
@@ -178,7 +204,11 @@ public class AddFragment extends Fragment {
                         Context applicationContext = Ocn.getContextOfApplication();
                         final InputStream imageStream = applicationContext.getContentResolver().openInputStream(imageUri);
                         final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
-                        a[c] = selectedImage;
+                        Bitmap cut_image = scaleImage(selectedImage, 200, 200);
+                        a[c] = cut_image;
+                        if (c != 4 && a[c + 1] == null) {
+                            a[c + 1] = getBitmapFromVectorDrawable(getActivity(), R.drawable.add_photo);
+                        }
                         gridview1.setAdapter(new ImageAdapter(getActivity(), a, R.layout.add_menu1));
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
@@ -227,6 +257,47 @@ public class AddFragment extends Fragment {
         byte [] b=baos.toByteArray();
         String temp= Base64.encodeToString(b, Base64.DEFAULT);
         return temp;
+    }
+    public Bitmap StringToBitMap(String encodedString){
+        try{
+            byte [] encodeByte = Base64.decode(encodedString,Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            return bitmap;
+        }
+        catch(Exception e){
+            e.getMessage();
+            return null;
+        }
+    }
+    public static  Bitmap  scaleImage(Bitmap bm, int newWidth, int newHeight){
+        if (bm == null){
+            return null;
+        }
+        int width = bm.getWidth();
+        int height = bm.getHeight();
+        float scaleWidth = ((float) newWidth) / width;
+        float scaleHeight = ((float) newHeight) / height;
+        Matrix matrix = new Matrix();
+        matrix.postScale(scaleWidth, scaleHeight);
+        Bitmap newbm = Bitmap.createBitmap(bm, 0, 0, width, height, matrix,true);
+        if (bm != null & !bm.isRecycled()){
+            bm.recycle();//Уничтожить исходное изображение
+            bm = null;
+        }
+        return newbm;
+    }
+    public static Bitmap getBitmapFromVectorDrawable(Context context, int drawableId) {
+        Drawable drawable = ContextCompat.getDrawable(context, drawableId);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            drawable = (DrawableCompat.wrap(drawable)).mutate();
+        }
+
+        Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(),
+                drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+        drawable.draw(canvas);
+        return bitmap;
     }
 }
 
