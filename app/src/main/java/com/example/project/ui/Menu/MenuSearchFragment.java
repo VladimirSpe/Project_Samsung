@@ -18,6 +18,7 @@ import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -63,13 +64,37 @@ public class MenuSearchFragment extends Fragment {
         back = view.findViewById(R.id.back_button_search);
         listView = view.findViewById(R.id.adds_listview_menu);
         pr = view.findViewById(R.id.add_progress_b_menu);
+        SearchView searchView = view.findViewById(R.id.search_edit);
         frameLayout = view.findViewById(R.id.search_view1);
         nothing = view.findViewById(R.id.nothing);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Fragment frag2 = new MenuSearchFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("search", String.valueOf(query));
+                Log.d("bundle", String.valueOf(query));
+                frag2.setArguments(bundle);
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.replace(R.id.nav_host_fragment_activity_main, frag2);
+                ft.addToBackStack(frag2.toString());
+                ft.commit();
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+        });
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                assert getFragmentManager() != null;
-                getFragmentManager().popBackStack();
+                Fragment frag2 = new MenuFragment();
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.replace(R.id.nav_host_fragment_activity_main, frag2);
+                ft.addToBackStack(frag2.toString());
+                ft.commit();
             }
         });
         myAddsRef.addValueEventListener(new ValueEventListener() {
@@ -102,9 +127,10 @@ public class MenuSearchFragment extends Fragment {
                                                             long id) {
                                         Fragment frag2 = new Adds_view_frahment();
                                         Bundle bundle = new Bundle();
-                                        Log.d("bundle", String.valueOf(adds_id_list.get(position)));
-                                        bundle.putString("ID", String.valueOf(adds_id_list.get(position)));
+                                        Log.d("bundle", adds_list_tr.get(position).name + adds_list_tr.get(position).userid);
+                                        bundle.putString("ID", adds_list_tr.get(position).name + adds_list_tr.get(position).userid);
                                         bundle.putString("Type", "menu");
+                                        bundle.putString("Query", search_text);
                                         adds_id_list.clear();
                                         frag2.setArguments(bundle);
                                         FragmentTransaction ft = getFragmentManager().beginTransaction();

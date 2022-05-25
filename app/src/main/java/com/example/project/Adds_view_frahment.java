@@ -26,6 +26,7 @@ import com.example.project.ui.Add.AddFragment;
 import com.example.project.ui.Add.AddsAdapter;
 import com.example.project.ui.Add.Start_addFragment;
 import com.example.project.ui.Menu.MenuFragment;
+import com.example.project.ui.Menu.MenuSearchFragment;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -50,6 +51,7 @@ public class Adds_view_frahment extends Fragment {
         Bundle bundle = getArguments();
         String id = bundle.getString("ID");
         String type = bundle.getString("Type");
+        String sear = bundle.getString("Query");
         Log.d("add_id", id);
         View view = inflater.inflate(R.layout.adds_view, container, false);
         name = view.findViewById(R.id.add_name_view);
@@ -64,7 +66,7 @@ public class Adds_view_frahment extends Fragment {
             edit.setVisibility(View.INVISIBLE);
         }
         FirebaseDatabase mDatabase = FirebaseDatabase.getInstance("https://help-me-e2de7-default-rtdb.europe-west1.firebasedatabase.app");
-        if (type.equals("adds")) {
+        if (type.equals("adds") || type.equals("menu")) {
             DatabaseReference myAddsRef = mDatabase.getReference("Adds");
             myAddsRef.child(String.valueOf(id)).addValueEventListener(new ValueEventListener() {
                 @Override
@@ -139,8 +141,20 @@ public class Adds_view_frahment extends Fragment {
         previous.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                assert getFragmentManager() != null;
-                getFragmentManager().popBackStack();
+                Fragment frag2 = new MenuFragment();
+                if (type.equals("adds")) {
+                    frag2 = new Start_addFragment();
+                }
+                else if (type.equals("menu")){
+                    frag2 = new MenuSearchFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("search", sear);
+                    frag2.setArguments(bundle);
+                }
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.replace(R.id.nav_host_fragment_activity_main, frag2);
+                ft.addToBackStack(frag2.toString());
+                ft.commit();
             }
         });
 
