@@ -8,10 +8,13 @@
     <Button
         android:id="@+id/But_reg"
         android:layout_width="269dp"
-        android:layout_height="69dp"
+        android:layout_height="70dp"
         android:layout_marginStart="75dp"
         android:layout_marginEnd="70dp"
         android:layout_marginBottom="81dp"
+        android:background="@color/light_blue_400"
+        android:textColor="@color/white"
+        android:textSize="15dp"
         android:text="Регистрация"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,14 +22,19 @@
 
     <Button
         android:id="@+id/But_inp"
-        android:layout_width="261dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="73dp"
-        android:layout_marginEnd="58dp"
+        android:layout_width="259dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginEnd="70dp"
         android:layout_marginBottom="33dp"
+        android:background="@color/light_blue_400"
         android:text="Вход"
+        android:textColor="@color/white"
+        android:textSize="15dp"
         app:layout_constraintBottom_toTopOf="@+id/But_reg"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.983" />
 </androidx.constraintlayout.widget.ConstraintLayout>
